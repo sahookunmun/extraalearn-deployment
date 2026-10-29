@@ -23,10 +23,10 @@ def home():
 def predict_sales():
     if not model:
         return jsonify({'error': 'Model pipeline not loaded.'}), 500
-        
+
     try:
         data = request.get_json(force=True)
-        
+
         # Map incoming JSON attributes into the model feature structure
         sample = {
             'age': int(data['age']),
@@ -51,7 +51,7 @@ def predict_sales():
         prediction = int(model.predict(input_data)[0])
 
         return jsonify({'Lead': prediction})
-        
+
     except Exception as e:
         return jsonify({'error': str(e)}), 400
 
