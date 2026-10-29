@@ -37,10 +37,10 @@ if st.button("Predict Conversion Status", type="primary"):
         "educational_channels": educational_channels,
         "referral": referral
     }
-    
+
     # Target the backend service inside the Docker Compose network
     backend_url = "http://backend:5000/v1/predict"
-    
+
     try:
         response = requests.post(backend_url, json=payload, timeout=10)
         if response.status_code == 200:
